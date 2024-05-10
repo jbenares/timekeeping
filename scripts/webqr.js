@@ -182,7 +182,7 @@ function read()
                 $("body").removeClass("backbody-success");
             }
              setTimeout(function () {
-               window.location = 'timein.php';
+               window.location = 'index.php';
                 }, 3000);
                 
 
