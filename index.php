@@ -7,12 +7,13 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>CENPRI Timekeeping Web QR</title>
-    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- <link type="text/css" href="css/bootstrap-grid.min.css" rel="stylesheet"> -->
-    <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/fonts.css" rel="stylesheet">
+    <!-- <link type="text/css" href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet"> -->
+    <!-- <link href="css/font-awesome.min.css" rel="stylesheet"> -->
+    <!-- <link href="css/fonts.css" rel="stylesheet"> -->
+
     <script>
         function changeBack(){
             $("body").removeClass("backbody");
@@ -46,7 +47,12 @@
           setInterval('digitalClock()', 1000);
         }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+        body {
+            font-family: 'Figtree', Arial, sans-serif;
+        }
         .backbody{
             width:100%;
             background-image: url(images/background1.jpg); 
@@ -64,7 +70,7 @@
             background-size: cover;
             height: 100%;
             overflow: hidden;
-            box-shadow: inset 0px 0px 50px 20px #921ee7
+/*            box-shadow: inset 0px 0px 50px 20px #921ee7*/
         }
         .backbody-success{
             width:100%;
@@ -74,7 +80,7 @@
             background-size: cover;
             height: 100%;
             overflow: hidden;
-            box-shadow: inset 0px 0px 50px 20px #15af60
+/*            box-shadow: inset 0px 0px 50px 20px #15af60*/
         }
         .backbody-danger{
             width:100%;
@@ -84,7 +90,7 @@
             background-size: cover;
             height: 100%;
             overflow: hidden;
-            box-shadow: inset 0px 0px 50px 20px #fe3333
+/*            box-shadow: inset 0px 0px 50px 20px #fe3333*/
         }
         .backbody-warning{
             width:100%;
@@ -94,7 +100,7 @@
             background-size: cover;
             height: 100%;
             overflow: hidden;
-            box-shadow: inset 0px 0px 50px 20px #d8c001
+/*            box-shadow: inset 0px 0px 50px 20px #d8c001*/
         }
         .backbody-dark{
             width:100%;
@@ -113,7 +119,7 @@
             background:white;
             overflow: auto;
             width: 100%;
-            font-family: arial;
+            font-family: Figtree;
         }
         #header{
             background:white;
@@ -147,7 +153,7 @@
             left:0px;
             top:-160px;
             z-index:100;
-            font:18px arial,sans-serif;
+            font:18px Figtree,sans-serif;
             background:#f0f0f0;
             margin-left:35px;
             margin-right:35px;
@@ -169,8 +175,8 @@
             border-width: 3px 3px 3px 3px;
         }
         .result{
-            border: solid;
-            border-width: 1px 1px 1px 1px;
+            /*border: solid;
+            border-width: 1px 1px 1px 1px;*/
             padding:5px;
             width:70%;
             font-size: 30px;
@@ -215,7 +221,7 @@
             height: 10px;
             background: #fff0;
             color: #fff!important;
-            border: 1px solid #fff0;
+            border: 0px solid #fff0;
 
         }
         .empno:disabled{
@@ -230,10 +236,20 @@
 
         }
         .empno:focus-visible{
-            border: 1px solid #fff0;
+            border: 0px solid #fff0!important;
+            box-shadow: 0px 0px 0px 0px #fff0!important;
+            background: #fff0!important;
+            color: #fff!important;
+            outline: none;
+        }
+
+        .empno:focus{
+            border: 0px solid #fff0;
             box-shadow: 0px 0px 0px 0px #fff0;
             background: #fff0;
             color: #fff;
+            outline: none;
+        }
         }
         ::placeholder {
           color: #fff!important;
@@ -265,7 +281,7 @@
             font-weight: 500;
             text-transform: uppercase;
             /*letter-spacing: 10px;*/
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Figtree', sans-serif;
         }
         .clock{
             font-size: 200px;
@@ -273,7 +289,7 @@
             color: #fff;
             line-height: 200px;
             letter-spacing: -5px;
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Figtree', sans-serif;
         }
     </style>
     <script type="text/javascript" src="scripts/jquery.min.js"></script> 
@@ -306,7 +322,7 @@ if(isset($_POST['timein'])){
 } ?>
 <body class="backbody">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <div style="padding-top:50px">
                     <h2 class="text-white"style="margin-bottom:0px;line-height: 20px;">COMPANY</h2>
@@ -319,8 +335,7 @@ if(isset($_POST['timein'])){
             <div class="col-lg-12">
                 <center>
                     <div style="padding-top: 100px;"></div>
-                    <div id="clock" class="clock"> </div>
-                    <div id="date" class="date"> </div>
+                    
                 </center>   
             </div>
         </div>
@@ -334,68 +349,39 @@ if(isset($_POST['timein'])){
                                 <td align="center" width="50%">
                                     <input type='text' name='empno' id='empno' class='empno form-control' placeholder='Employee Number' required='required' autofocus="" oninput="changeBack()">
                                     <div id="result" class=""></div>
-                                    <!-- <div  class="result">100-FLOR JASon asdlkhaksjdhkasgh</div> -->
                                 </td>
                             </tr>
                         </table>
                     </form>
                 </div>
             </div>
+        </div> -->
+        <div class="mt-10 absolute z-10 top-0 mx-12">
+            <h2 class="m-0 leading-none text-white text-3xl font-bold uppercase">Company</h2>
+            <p class="!text-base text-white ">KRONOS QR Code Scanner</p>
         </div>
-        <!-- 
-        <div class="row">
-            <div class="col-lg-6">
-                <div style="position:relative;top:+20px;left:0px;"><g:plusone size="medium"></g:plusone></div>
-                <div style="margin-top: 80px"></div>
-                <center>
-                    <h1 class="text-white" style="font-size: 100px">CENPRI</h1>
-                    <p class="text-white" id="mp1" style="line-height: 10px">
-                     QR Code Scanner
-                    </p>
-                    <br>
-                    
-                  
-                    <div id='msg'></div>    
-                    <ul></ul> 
-                </center>  
-            </div>
-            <div class="col-lg-6">
-                <div id="mainbody">
-                    <form id="barcode-form">
-                    <table class="tsel" border="0" width="100%">
-                        <tr>
-                            <td valign="top" align="center" width="50%">
-                                <table class="tsel" border="0">
-                                    <tr>
-                                        <td><br><br><br><br><br><br></td>
-                                    </tr>
-                                    <tr>
-                                        <td >
-                                        <input type='text' name='empno' id='empno' class='empno' placeholder='Employee Number' required='required' autofocus="">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td >
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="center">
-                                <span class="fa fa-caret-down"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" align="center">
-                                <div id="result"></div>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+        <div class="flex h-screen w-screen">
+            <div class="m-auto">
+                <div class="text-center">
+                    <div id="clock" class="clock !text-[250px] !font-bold"> </div>   
+                    <div id="date" class="date font-extrabold "> </div>
+                </div>
+                <div class="mt-5">
+                    <form id="barcode-form" class="text-center mx-auto">
+                        <input type='text' name='empno' id='empno' class='empno form-control !text-white placeholder:!text-white text-center bg-transparent !border-none ' placeholder='Scanning ... ' required='required' autofocus="" oninput="changeBack()">
+                    </form>
+                </div>
+                <div class="flex justify-center">
+                    <!-- <div class="  ">
+                        <div class="flex justify-center space-x-2">
+                            <span>Sample Lorem</span>
+                            <span class="font-bold">10:10</span>
+                        </div>
+                    </div> -->
+                    <div id="result" class="rounded-xl text-white w-[650px] mx-auto p-4 text-2xl !absolute !b-0"></div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     
     <canvas id="qr-canvas" width="800" height="600"></canvas>
